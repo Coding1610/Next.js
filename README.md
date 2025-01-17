@@ -1,23 +1,24 @@
-## What is Next.js
+# What is Next.js
 <br/>
 
-# React
+## React
 1. Its not feasible to create a fully featured application ready for production.
 2. React is a library for building user interfaces.
 3. You need to make decisions about other features such as routing, data fetching and many more. 
 <br/>
 
-# Next.js
+## Next.js
 1. Next.js is a React framework for building web applications.
 2. It uses React for building user interfaces.
 3. Provides additional features that enable you to build production ready applications.
 4. These features include routing, optimized rendering, data fetching, bundling, comiling and more.
 5. You don't need to install additional packages as Next.js provides everything you need.
-
-## Why learn Next.js
 <br/>
 
-# Next..js simplifies the process of building a web application for production.
+# Why learn Next.js
+<br/>
+
+## Next..js simplifies the process of building a web application for production.
 
 1. Routing
 2. API routes
