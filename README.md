@@ -44,14 +44,16 @@
 
 1. Next.js has file system based routing mechanism.
 
-app/
-  ├── page.tsx         // Home page (/)
-  ├── about/
-  │   └── page.tsx     // About page (/about)
-  ├── contact/
-  │   └── page.tsx     // Contact page (/contact)
-  ├── blog/
-  │   └── page.tsx     // Blog page (/blog)
+```
+  app/
+    ├── page.tsx         // Home page (/)
+    ├── about/
+    │   └── page.tsx     // About page (/about)
+    ├── contact/
+    │   └── page.tsx     // Contact page (/contact)
+    ├── blog/
+    │   └── page.tsx     // Blog page (/blog)
+```
 
 2. URL paths that useres can access in the browser are defined by files and folders in your codebase.
 
@@ -65,20 +67,24 @@ app/
 
 1. In Next.js, you create nested routes by adding folders inside the app directory. Each folder represents a route segment. For example :
 
-app/
-  ├── dashboard/
-  │   └── page.tsx     // /dashboard
-  │   ├── settings/
-  │   │   └── page.tsx // /dashboard/settings
+```
+  app/
+    ├── dashboard/
+    │   └── page.tsx     // /dashboard
+    │   ├── settings/
+    │   │   └── page.tsx // /dashboard/settings
+```
 
 # 3. Dynamic Routing
 
 1. Dynamic routes use square brackets [param] to create pages that can capture different values :
 
-app/
-  ├── users/
-  │   └── [id]/
-  │       └── page.tsx // /users/123, /users/456, etc.
+```
+  app/
+    ├── users/
+    │   └── [id]/
+    │       └── page.tsx // /users/123, /users/456, etc.
+```
 
 2. Access the parameter using params.id in your page component.
 
@@ -86,20 +92,24 @@ app/
 
 1. You can combine nested and dynamic routes :
 
-app/
-  ├── posts/
-  │   └── [category]/
-  │       └── [id]/
-  │           └── page.tsx // /posts/tech/123, /posts/news/456
+```
+  app/
+    ├── posts/
+    │   └── [category]/
+    │       └── [id]/
+    │           └── page.tsx // /posts/tech/123, /posts/news/456
+```
 
 # 5. Catch-all Segments
 
 1. Use [...slug] to catch all following routes :
 
-app/
-  ├── docs/
-  │   └── [...slug]/
-  │       └── page.tsx // Matches /docs/a, /docs/a/b, /docs/a/b/c
+```
+  app/
+    ├── docs/
+    │   └── [...slug]/
+    │       └── page.tsx // Matches /docs/a, /docs/a/b, /docs/a/b/c
+```
 
 2. Or [[...slug]] for optional catch-all routes that also match the parent path.
 
@@ -107,10 +117,12 @@ app/
 
 1. Create a not-found.tsx file to customize the 404 page :
 
-app/
-  ├── not-found.tsx    // Global 404 page
-  ├── blog/
-  │   └── not-found.tsx // Custom 404 just for /blog/*
+```
+  app/
+    ├── not-found.tsx    // Global 404 page
+    ├── blog/
+    │   └── not-found.tsx // Custom 404 just for /blog/*
+```
 
 2. You can place not-found.tsx in any folder to create segment-specific error pages. Each one will handle "not found" errors for its route segment and all nested routes below it.
 
@@ -118,10 +130,12 @@ app/
 
 1. Private folders in Next.js allow you to create folders that won't be included in the routing system. Here's a quick overview :
 
-app/
-  ├── _components/     // Using underscore
-  ├── (components)/   // Using parentheses
-  └── page.tsx
+```
+  app/
+    ├── _components/     // Using underscore
+    ├── (components)/   // Using parentheses
+    └── page.tsx
+```
 
 2. The key point is that any folder starting with _ or wrapped in () will be ignored by Next.js routing system, making them perfect for organizing internal application code like components, utilities, and helpers.
 3. But you can access private folder if you named that folder starts with <b>"%5F"</b>.
@@ -131,26 +145,30 @@ app/
 1. Route Groups in Next.js allow you to organize routes without affecting the URL structure. Here's a brief explanation : 
 2. Use parentheses (folderName) to create a route group :
 
-app/
-  ├── (shop)/
-  │   ├── products/
-  │   │   └── page.tsx    // /products
-  │   └── categories/
-  │       └── page.tsx    // /categories
-  │
-  ├── (marketing)/
-  │   ├── blog/
-  │   │   └── page.tsx    // /blog
-  │   └── about/
-  │       └── page.tsx    // /about
+```
+  app/
+    ├── (shop)/
+    │   ├── products/
+    │   │   └── page.tsx    // /products
+    │   └── categories/
+    │       └── page.tsx    // /categories
+    │
+    ├── (marketing)/
+    │   ├── blog/
+    │   │   └── page.tsx    // /blog
+    │   └── about/
+    │       └── page.tsx    // /about
+```
 
-app/
-  ├── (shop)/
-  │   ├── layout.tsx      // Layout for shop pages
-  │   └── products/
-  ├── (marketing)/
-  │   ├── layout.tsx      // Different layout for marketing pages
-  │   └── blog/
+```
+  app/
+    ├── (shop)/
+    │   ├── layout.tsx      // Layout for shop pages
+    │   └── products/
+    ├── (marketing)/
+    │   ├── layout.tsx      // Different layout for marketing pages
+    │   └── blog/
+```
 
 3. The parentheses in the folder name are removed from the URL path, so (shop)/products/page.tsx creates the route /products, not /shop/products.
 
