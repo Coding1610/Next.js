@@ -1,6 +1,6 @@
 # What is Next.js
 
-## React
+## React.js
 1. Its not feasible to create a fully featured application ready for production.
 2. React is a library for building user interfaces.
 3. You need to make decisions about other features such as routing, data fetching and many more. 
@@ -14,7 +14,7 @@
 
 # Why learn Next.js
 
-## Next..js simplifies the process of building a web application for production.
+## Next.js simplifies the process of building a web application for production.
 
 1. Routing
 2. API routes
@@ -26,8 +26,8 @@
 
 # React Server Components (RSC)
 
-1. RSC is a new architecture introduced by the React team in version 18 which was quickly embraced by Next.js
-2. The architecture introduces a neewway of creating React Components, splitting them into tow type, <b>Server Components</b> & <b>Client Components</b>
+1. RSC is a new architecture introduced by the React team in version 18 which was quickly embraced by Next.js.
+2. The architecture introduces a neewway of creating React Components, splitting them into tow type, <b>Server Components</b> & <b>Client Components</b>.
 
 ## Server Components
 
@@ -37,7 +37,7 @@
 
 ## Client Components
 
-1. To create a CC, it is necessary to add <br>use client</br> at the top of the component file.
+1. To create a CC, it is necessary to add <b>use client</b> at the top of the component file.
 2. CC can't perform tasks like reading files, but they have the ability to use hooks and manage interactions.
 
 # 1. Routing
