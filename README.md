@@ -24,6 +24,16 @@
 6. Optimization
 7. Dev and Prod build system
 
+# Special Files
+
+1. page.tsx
+2. error.tsx
+3. layout.tsx
+4. loading.tsx
+5. deafult.tsx
+6. template.tsx
+7. not-found.tsx
+
 # React Server Components (RSC)
 
 1. RSC is a new architecture introduced by the React team in version 18 which was quickly embraced by Next.js.
@@ -218,3 +228,109 @@
 3. Supports automatic prefetching for performance.
 4. replace : Replace the current history state instead of adding a new url into the stack.
 5. You can add active link css classes.
+
+# 15. Navigate Programmatically : useRouter()
+
+1. Must use 'use client' directive.
+2. Works in client components only.
+3. Supports query parameters and dynamic routes.
+4. Handles loading states automatically.
+5. Maintains scroll position by default.
+
+## Available Methods of useRouter()
+
+1. push() : Navigate to new route
+2. replace() : Replace current history entry
+3. back() : Go to previous page
+4. forward() : Go to next page
+5. refresh() : Refresh current route
+6. prefetch() : Prefetch a route
+
+# 16. Template
+
+1. Template are similar to layouts in thta they wrap each child layout or page.
+2. But, with template, when a user navigates between routes that share a template a new instance of the component is mounted, DOM elements are recreated, state is not preserved, and effects are re-syncronized.
+3. A template can be defined by exporting a default React Component from a template.js or template.tsx file.
+4. Similar to layouts, templates also should accept a children prop which will render the nested segment in the route.
+5. Layout and Template both used then first Layout render then Template render.
+
+# 17. Loading UI
+
+## loading.tsx
+
+1. This file allows us to create loading state that are displayed to users while a specific route segment's content is loading.
+2. The loading state appears immediately upon navigation, giving users the assurance that the application is responsive and actively loading content.
+
+# 18. Error Handling & Recovering
+ 
+## error.tsx
+
+1. It is use in Client Component.
+2. Automatically wrap a route segment and its nested children in a React ErrorBoundary.
+3. Create error UI tailored to specific segments using the file-system hierarchy to adjust granularity.
+4. Isolate errors to affected segments while keeping the rest of the application functional.
+5. Add functionality to attempt to recover from an error without a full page reload.
+6. For Recover, page.tsx is in "use client", we use <b>reset</b> function.
+
+# 19. Handling Error in Nested Routes
+
+1. Error bubble up to the closet parent error boundary
+2. An error.tsx file will cater to errors for all its nested child segments.
+3. By positioning <b>error.tsx</b> files at different levels in the nested folders of a route, you can achieve a more granular level of error handling.
+
+# 20. Handling Error in Layouts
+
+1. An <b>error.tsx</b> file will handle errors for all nested child segments.
+2. Th error boundary does not catch errors thrown here because its nested inside the layouts components.
+3. Put error.tsx in parent folder.
+
+# 21. Parallel Routes
+
+1. Parallel Routes are an advanced routing mechanism that allows for the simultaneous rendering of multiple pages within the same layout.
+2. Parallel Routes in Next.js are defined using a feature known as <b>slots</b>.
+3. Slots help structure our content in a modular fashion.
+4. To define a slot, we use the <b>@folderName</b> naming convention.
+5. A clear benefit of parallel routes is their ability to split a single layout into various slots, making the code more manageable.
+
+## Independent Route Handling
+
+1. Each slot of your layout, such as user or revenue can have its own loading and error states.
+2. This granular control is particularly benefical in scenarios where different sections of the page load at varying speeds or encounter unique errors.
+
+## Sub Navigation
+
+1. Each slot of your dashboard can essentially function as a mini-application, complete with its own navigation ans state management.
+2. This is especially useful in a complex application such as our dashboard where different sections serve distinct purpose.
+
+# 22. Unmatched Routes
+
+## Navigation from the UI
+
+1. In the case of navigation with the UI, Next.js retains the previously active state of a slot regardless of changes in the URL.
+
+## Page Reload
+
+1. Next.js immediately searches for a <b>default.tsx</b> file within each unmatched slot.
+2. The presence of this file is critical, as it provides the default content that Next.js will render in th user interface.
+3. If this <b>default.tsx</b> file is missing in any of the unmatched slots for the current route, Next.js will render a 404 error.
+
+## default.tsx
+
+1. The <b>default.tsx</b> file in Next.js serves as a fallback to render content when the framework cannot retrieve a slot's active state from the current URL.
+2. You have complete freedom tp define the UI for unmatched routes, you either mirror the content found in <b>page.tsx</b> or craft an entirely custom view.
+
+# 23. Conditional Routes
+
+1. Based on condition you can render the components.
+
+# 24. Intercepting Routes
+
+1. Intercepting Routes allows you to intercept or stop the default routing behaviour to present an alternate view or component when navigating through the UI, while still preserving the intended route for scenarios like page reloads.
+2. This can be useful if you want to show a route while keeping the context of the current page.
+
+## Convention Patterns
+
+1. (.) - Intercept same level and below
+2. (..) - Intercept one level above
+3. (..)(..) - Intercept two levels above
+4. (...) - Intercept from root
