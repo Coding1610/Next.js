@@ -27,12 +27,13 @@
 # Special Files
 
 1. page.tsx
-2. error.tsx
-3. layout.tsx
-4. loading.tsx
-5. deafult.tsx
-6. template.tsx
-7. not-found.tsx
+2. routes.ts
+3. error.tsx
+4. layout.tsx
+5. loading.tsx
+6. deafult.tsx
+7. template.tsx
+8. not-found.tsx
 
 # React Server Components (RSC)
 
@@ -334,3 +335,93 @@
 2. (..) - Intercept one level above
 3. (..)(..) - Intercept two levels above
 4. (...) - Intercept from root
+
+# 25. Route Handlers
+
+## Methods 
+
+1. GET()
+2. POST()
+3. PATCH()
+4. DELETE()
+
+1. We can create custom request handlers for our routes using a feature called <b>route handlers</b>.
+2. Unlike page routes, which respond with HTMLcontent, route handlers allows you to create <b>RESTful endpoints</b>, giving you full control over the response.
+3. There is no overhead of having to create and configure a separate server.
+4. Route Handlers are also greate for making external API requests.
+5. Route handlers run server-side, ensuring that sensitive information like private keys remains secure and never gets shipped to the browser.
+
+## GET
+
+```
+  export async function GET(request:Request){
+     return Response.json(comments);
+  }
+```
+
+## POST
+
+```
+  export async function POST(request:Request){
+    const commnet = await request.json();
+    const newComment = {
+        id: comments.length + 1,
+        text : commnet.text,
+    };
+    comments.push(newComment);
+    return new Response(JSON.stringify(newComment),{
+        headers:{
+            "Content-Type":"application/json",
+        },
+        status:201,
+    });
+}
+```
+
+## PATCH
+
+```
+  export async function PATCH(request:Request,props:Props){
+    const body = await request.json();
+    const {text} = body;
+    const index = comments.findIndex((cmt) => cmt.id === parseInt(props.params.id));
+    comments[index].text = text;
+    return Response.json(comments[index]);
+}
+```
+
+## DELETE
+
+```
+  export async function DELETE(prequest:Request,props:Props){
+    const index = comments.findIndex((cmt) => cmt.id === parseInt(props.params.id));
+    const deletedComment = comments[index];
+    comments.splice(index,1);
+    return Response.json(deletedComment);
+}
+```
+
+## Query Route Handler
+
+```
+  export async function GET(request:NextRequest){
+    const searchParams = request.nextUrl.searchParams;
+    const query = searchParams.get("query");
+    const filteredComments = query ? comments.filter((cmt) => cmt.text.includes(query)) : comments;
+    return Response.json(filteredComments);
+}
+```
+
+## Redirect in Route Handler
+
+```
+  export async function GET( _request:Request, props:Props){
+    if( parseInt(props.params.id) > comments.length ){
+       redirect("/comments"); 
+    }
+    else{
+        const comment = comments.find((comment) =>  comment.id === parseInt(props.params.id));
+        return Response.json(comment);
+    }
+};
+```
