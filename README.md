@@ -468,3 +468,14 @@
 2. Using the <b>Request</b> object with <b>GET</b> method.
 3. Employing dynamic function like <b>headers()</b> & <b>cookies()</b>.
 4. Using ant HTTP metho other than <b>GET</b>.
+
+# 29. Middleware
+
+1. Middleware in Next.js is a powerful feature that offers a robust way to intercept and control the flow of requests and responses within your application.
+2. It does this at a global level significantly enhancing features like redirection, URL rewrite, authentication, headers and cookies management and more.
+3. make file name middleware.ts in src folder and function name middleware().
+
+## Middleware allows us to specify paths where it will be active
+
+1. Custom Matcher Config
+2. Conditional Statements
