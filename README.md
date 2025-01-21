@@ -425,3 +425,46 @@
     }
 };
 ```
+
+# 26. Headers in Route Handlers
+
+1. HTTP headers represent the metadata associated with an API request and response.
+
+## Request Headers
+
+1. These are sent nby the client, such as a web browser, to the server. 
+2. They contain essential information about the request, which helps the server understand and process it correctly.
+
+### User-Agent : Which identifies browser and OS to the server.
+
+### Accept : Which indicatesthe content type like text, video or image formats that the client can process.
+
+### Authorization : Header used by the client to authenticate itself to the server.
+
+## Response Headers
+
+1. These are sent back from the server to the client. They provide information about the server and the data being sent in the response.
+
+### Content-Type :Which indicates the media type of the response, It tells the client what the data type of the returned content is, such as text/html for HTML docs, application/json for JSON data etc.
+
+# 27. Cookies in Route Handlers
+
+1. Cookies are small pieces of data that a server sends to users web browser.
+2. The browser may store the cookies and send it back to the same server with later requests.
+
+## Cookies are mainly used for three purposes
+
+1. Session management like login and shopping carts. 
+2. Personalization like user preferences and themes.
+3. Tracking like recording and analyzing user behavior.
+
+# 28. Caching in Route Handlers
+
+1. Route Handlers are cached by deafult when using the <b>GET</b> method with the Response Object in Next.js.
+
+## How to opt out of caching
+
+1. Dynamic mode in <b>Segment Config Option</b>.
+2. Using the <b>Request</b> object with <b>GET</b> method.
+3. Employing dynamic function like <b>headers()</b> & <b>cookies()</b>.
+4. Using ant HTTP metho other than <b>GET</b>.
