@@ -479,3 +479,59 @@
 
 1. Custom Matcher Config
 2. Conditional Statements
+
+# 30. Rendering
+
+1. Is the process that transforms the code you write into user interface.
+2. In Next.js, choosing the right time and place to do this rendering is vital for building a performant application
+
+# 31. CSR : Client Side Rendering (React.js)
+
+1. This method of rendering, where the component code is transformed into a user interface directly within the browser (the client), is known as <b>CSR</b>.
+2. CSR quickly became the standard for <b>SPA's</b>, with widespread adoption.
+3. It wasn't long before developers began noticing some inherent drawbacks to this approach.
+
+## Drawbacks
+
+### 1. SEO : Server Side Rendering (Next.js)
+
+1. Generating HTML that mainly contains a single <div></div> tag is not optimal for SEO, as it provides little content for search engines to index.
+
+### 2. Performance
+
+1. Having the browser handle all the work, such as fetching data, computing the UI and making the HTML interactive can slow things down. User might see a blank screen or a loading spinner while the page loads.
+2. Each new feature added to the application increases the size of JS bundle. prolonging the wait time for users to see the UI.
+
+# 32. SSR : Server Side Rendering
+
+1. The server generates the complete HTML for a web page and sends it to the browser. The browser then displays the content directly.
+2. It significantly improves SEO beacuse search engines can easily index the server-rendered content.
+3. Users can immediately see the page HTML content, instead of a blank screen or loading spinner.
+
+## Hydration
+
+1. During hydration, React takes control in the browser, reconstructing the component tree in memeory based on the static  HTML that was served.
+2. It carefully plans the placement of interactive elements within this tree. Them, React proceeds to bind the necessary JS logic to these elements.
+3. This involves initializing the application state, attaching event handlers for actions such as clicks and mouseovers, and setting up any other dynamic functionalities required for a fully interractive user experience.
+
+## SSG : Static Site Generation
+
+1. SSG occurs at build time, when the application is deployed on the server. This results in pages that are already rendered and ready to serve. It is ideal for conntent that doesn't change often, like blog posts.
+
+## Drawbacks
+
+### 1. You have to fetch everyting before you can show anything
+
+1. Components cannot start rendering and then pause or "Wait" while data is still being loaded.
+2. If a component need to fetch data from a database or API, this fetching must be completed before the server can begin rendering the page.
+3. This can delay the server's response time to the browser, as the server must finish collecting all necessary data before any part of the page can be sent to the client.
+
+### 2. You have to load everyting before you can hydrate anything
+
+1. For successful hydration, where React adds interactivily to the server-rendered HTML, the component tree in the browser must exactly match th server-generated component tree.
+2. This means that all the JS for the component must be loaded on the client before you can start hydrating any of them.
+
+### 3. You have to hydrate everything before you can interact with anything
+
+1. React hydrates the component tree in a single pass, meaning once it starts hydrating, it wont stop until its finished with the entire tree.
+2. As a consequence, all components must be hydrate before you can interact with any of them.
