@@ -648,3 +648,5 @@ export default function ClientComponent(){
 5. Improved Security : Sensitive logic and data access remain server-side, minimizing potential client-side vulnerabilities.
 6. Static Site Generation (SSG) Support : Enables pre-rendering of pages at build time for faster content delivery.
 7. Automatic Code Splitting : Intelligently splits JavaScript, loading only necessary code for each component.
+
+<img src="./tutorial_03/public/Screenshot 2025-01-24 112712.png" />
