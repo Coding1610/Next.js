@@ -649,4 +649,12 @@ export default function ClientComponent(){
 6. Static Site Generation (SSG) Support : Enables pre-rendering of pages at build time for faster content delivery.
 7. Automatic Code Splitting : Intelligently splits JavaScript, loading only necessary code for each component.
 
+# 33. RSC Rendering Lifecycle
+
+## Loading 
+
 <img src="./tutorial_03/public/Screenshot 2025-01-24 112712.png" />
+
+## Updating
+
+<img src="./tutorial_03/public/Screenshot 2025-01-24 113254.png" />
