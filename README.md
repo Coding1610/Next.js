@@ -658,3 +658,52 @@ export default function ClientComponent(){
 ## Updating
 
 <img src="./tutorial_03/public/Screenshot 2025-01-24 113254.png" />
+
+# 34. Server Rendering Methods
+
+1. Static Rendering
+2. Dynamic Rendering
+3. Streaming
+
+## Production Server VS Development Server
+
+1. For Production, an optimized build is created once, and you deploy that build.
+2. A Development Server, on the other hand, focuses on the developer experience.
+3. We can not afford to build our app once, make changes, rebuild, and so on.
+4. For Production builds, a page will be pre-rendered once when we run the build command.
+5. In Development mode, apage will be pre-rendered for every request.
+
+## 1. Static Rendering
+
+1. Static Rendering is a strategy where we generate HTML page at the of building our application.
+2. This approach allows the page to be built once, cached by a CDN, and served to the client almost instantly.
+3. This optimization also enables you to share the result of the rendering work among different users, resukting in a significant perfornance boost for your application.
+4. Static Rendering is particularly useful for Blog Pages, E-commerce product pages, documentation and marketing pages.
+5. Static Rendering is the default strategy in the app router.
+6. All routes are automatically prepared at build time without additional setup.
+
+### How to Static Render
+
+- By default Next.js Render App in Static Mode.
+
+## 2. Dynamic Rendering
+
+1. Is a server rendering strategy where routes are rendered for each user at request time.
+2. It is useful when a route has data that is personalized to the user or contains information that can only be known at request time, such as cookies or the URL's search parameters.
+3. News websites, personalized e-commerce pages, and social media feeds are some examples where dynamic rendering is beneficial.
+
+### How to Dynamic Render
+
+- Dynamic Rendering, if a dynamic function is discovered, Next.js will switch to dynamically rendering the whole route.
+- In Next.js, these dynamic functions are : cookies(), headers() and searchParams.
+- Uisng any of these will opt the whole route into dynamic rendering at request time.
+
+## 3. Streaming
+
+1. Is a strategy that allows for progressive UI rendering from the server.
+2. Work is divided into chunks and streamed to the client as soon as it's ready.
+3. Streaming significantly improves both the initial page loading performance and the rendering of UI elements that rely on slower data fetches, which would otherwise block the rendering of the entire route.
+
+### How to Streaming
+
+- Is intergrated into the Next.js App Router by default.
