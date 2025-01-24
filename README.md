@@ -595,11 +595,41 @@
 4. Client Components have access to the client environment, such as browser, allowing them to use state, effects and event listeners to handle interactivity and also access browser-exclusive API's like <b>geoloaction or localStorage</b>, allowing you to build UI for specific use cases.
 5. In fact the term <b>Client Component</b> does not signify anything new, it simply helps differentiate these components from the newly introduced <b>Server Component</b>.
 
+```
+"use client"
+import { useState } from "react";
+
+export default function ClientComponent(){
+    console.log("this component is client component");
+    const[val,setVal] = useState(0);
+    return (
+        <>
+        <h1>Client Component</h1>
+        </>
+    )
+}
+```
+
+- Are rendered once on the server and then on the client.
+
 ## Server Compoenent
 
 1. Server Components represnt a new type of React Component specifically designed to operate exclusively on the server.
 2. Unlike Client Compoenent, their code stays on the server and is never downloaded to the client.
 3. This design choice offers mutilple benefits to React Application.
+
+```
+  export default function ServerComponent(){
+    console.log("this component is server component");
+    return (
+        <>
+        <h1>Server Component</h1>
+        </>
+    )
+}
+```
+
+- Are rendered only on the server.
 
 ## RSC Key Takeways
 
@@ -608,3 +638,13 @@
 3. They can't manage clicks or interactions directly.
 4. Client Components, on the other hand, work in the user's browser and handle all the interactive parts of the app, like clicking and typing.
 5. They can also be rendered on the server for a fast initial load of the site. This setup helps make websites faster, more secure, and easier for everyone to use, no matter where they are or what device they're using.
+
+## Benefits
+
+1. Performance Optimization : Renders components on the server, reducing client-side JavaScript bundle size and improving initial page load speed.
+2. Enhanced SEO : Server-side rendering ensures content is fully available to search engine crawlers, improving indexability.
+3. Reduced Client-Side Computation : Complex rendering logic happens on the server, decreasing browser processing requirements.
+4. Seamless Data Fetching : Allows direct database or API queries without exposing sensitive credentials to the client.
+5. Improved Security : Sensitive logic and data access remain server-side, minimizing potential client-side vulnerabilities.
+6. Static Site Generation (SSG) Support : Enables pre-rendering of pages at build time for faster content delivery.
+7. Automatic Code Splitting : Intelligently splits JavaScript, loading only necessary code for each component.
