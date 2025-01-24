@@ -535,3 +535,76 @@
 
 1. React hydrates the component tree in a single pass, meaning once it starts hydrating, it wont stop until its finished with the entire tree.
 2. As a consequence, all components must be hydrate before you can interact with any of them.
+
+# 31. Suspense for SSR
+
+1. Use the <b><Suspense></b> component to unlock two major SSR feature,
+
+- HTML Streaming on the server.
+- Selective Hydration on the client
+
+## HTML Streaming on the server
+
+1. You don't have to fetch everything before you can show anything.
+2. If a particular section delays the initial HTML, it can be seamlessly integrated into the stream later.
+3. This is the essence of how Suspense facilitates server-side HTML streaming.
+
+## Code Splitting
+
+1. Code splitting allows you to mark specific code segments as not immeiately necessary for loading, signalling your bundler to segregate them into spearate <script> tags.
+2. Using <b>React.lazy</b> for code spliting enables you to sprate the main section's code from the primary JS bundler.
+3. The JS containing React and the code for the entire application, excluding the main section, can opw be downloaded independently by the client, without having to wait for the main section's code.
+
+## Selective Hydration on th Client
+
+1. Selective Hydration offers a solutions to third issue.
+2. By wrapping the main section within <Suspense>, you are indicated to React that it should not prevent the rest of the page from not just streaming but also from hydrating.
+3. This feature, called <b>Selective Hydration</b> allows for the hydration of sections as they become available, before the rest of HTML and JS code are fully downloaded.
+4. React begins hydrating as soon as possible, enabling interactions with elements like the header and side navigation without waiting for the main content to be hydrated.
+5. This process is managed automaticallyby React.
+6. In secnarios where multiple components are awaiting hydration, React prioritizes hydration n=based on user interaction.
+
+## Drawbacks of Suspense SSR
+
+1. Even though JS code is streamed to th browser asynchronously, eventually, the entire code for a web page must be downloaded by the user.
+- As applications add more features, the amount of use code need to download also grow.
+- <b> Should users really have to download so much data ? </b>
+
+2. The current approach requires that all React components undergo hydration on the client side, irrespective of their actual need for interactivity.
+- This process can inefficiently spend resource and extend the loading times and time to interactivity for users, as their devices need to process and render components that might not even require client-side interaction.
+- <b> Should all components be hydrated, even those that dont need interactivity ? </b>
+
+3. In spite of servers superior capacity for handling intensive processing tasks, the buld of JS execution still takes place on the user's device.
+- This can slow down the performance, especially on device that are not very powerful.
+- <b> Should so much of work be done on the user's device ? </b>
+
+# 32. React Server Component (RSC)
+
+1. RSC represent a new architecture designed by the Recat Team.
+2. This approach aims to leverage the strengths of both server and client environments, optimizing for efficiency, load times and interactivity.
+3. The Architecture intoduces a Dual-Component model.
+- Client Component
+- Server Component
+4. This distinction is not based on the functionality of the components but rather on where they execute and the specific enviroments they are designed to interact with.
+
+## Client Component
+
+1. Client Components are the familiar React Componnets we have been using.
+2. They are typically rendered on the client side but, they can also be rendered to HTML on the server, allowing users to immedialtley see the pages HTML contexr rather than a blnak screen.
+3. Components that promarily run on the cloent but can also be executed once on the server as an optimization strategy.
+4. Client Components have access to the client environment, such as browser, allowing them to use state, effects and event listeners to handle interactivity and also access browser-exclusive API's like <b>geoloaction or localStorage</b>, allowing you to build UI for specific use cases.
+5. In fact the term <b>Client Component</b> does not signify anything new, it simply helps differentiate these components from the newly introduced <b>Server Component</b>.
+
+## Server Compoenent
+
+1. Server Components represnt a new type of React Component specifically designed to operate exclusively on the server.
+2. Unlike Client Compoenent, their code stays on the server and is never downloaded to the client.
+3. This design choice offers mutilple benefits to React Application.
+
+## RSC Key Takeways
+
+1. RSC introduce a new way of building React apps by separating components into two types: Server Components and Client Components.
+2. Server Components run only on the server, accessing data and preparing content without being sent to the browser, which makes the app faster for users because less information needs to download.
+3. They can't manage clicks or interactions directly.
+4. Client Components, on the other hand, work in the user's browser and handle all the interactive parts of the app, like clicking and typing.
+5. They can also be rendered on the server for a fast initial load of the site. This setup helps make websites faster, more secure, and easier for everyone to use, no matter where they are or what device they're using.
