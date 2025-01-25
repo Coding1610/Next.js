@@ -536,7 +536,7 @@
 1. React hydrates the component tree in a single pass, meaning once it starts hydrating, it wont stop until its finished with the entire tree.
 2. As a consequence, all components must be hydrate before you can interact with any of them.
 
-# 31. Suspense for SSR
+# 34. Suspense for SSR
 
 1. Use the <b><Suspense></b> component to unlock two major SSR feature,
 
@@ -578,7 +578,7 @@
 - This can slow down the performance, especially on device that are not very powerful.
 - <b> Should so much of work be done on the user's device ? </b>
 
-# 32. React Server Component (RSC)
+# 35. React Server Component (RSC)
 
 1. RSC represent a new architecture designed by the Recat Team.
 2. This approach aims to leverage the strengths of both server and client environments, optimizing for efficiency, load times and interactivity.
@@ -649,7 +649,7 @@ export default function ClientComponent(){
 6. Static Site Generation (SSG) Support : Enables pre-rendering of pages at build time for faster content delivery.
 7. Automatic Code Splitting : Intelligently splits JavaScript, loading only necessary code for each component.
 
-# 33. RSC Rendering Lifecycle
+# 36. RSC Rendering Lifecycle
 
 ## Loading 
 
@@ -659,7 +659,7 @@ export default function ClientComponent(){
 
 <img src="./tutorial_03/public/Screenshot 2025-01-24 113254.png" />
 
-# 34. Server Rendering Methods
+# 37. Server Rendering Methods
 
 1. Static Rendering
 2. Dynamic Rendering
@@ -708,7 +708,7 @@ export default function ClientComponent(){
 
 - Is intergrated into the Next.js App Router by default.
 
-# 35. Server & Client Composition Patterns
+# 39. Server & Client Composition Patterns
 
 ## Server Components
 
@@ -726,7 +726,7 @@ export default function ClientComponent(){
 - Handling event listeners (such as onClick(), onChange(), etc)
 - Managing state and lifecycle effects (such as useState(), useEffect(), useReducer())
 
-# 36. Server-Only Code
+# 40. Server-Only Code
 
 1. Certain code is intended to execute only on the server.
 2. You might have modular or functions that use multiple libraries, use environment variables. interact directly with a database, or process confidential information.
