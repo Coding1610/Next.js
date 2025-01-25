@@ -707,3 +707,64 @@ export default function ClientComponent(){
 ### How to Streaming
 
 - Is intergrated into the Next.js App Router by default.
+
+# 35. Server & Client Composition Patterns
+
+## Server Components
+
+- Fetching Data
+- Directly accessing backend resources
+- Protecting sensitive information (like access tokens and API key) on the server
+- Keeping large dependencies server-side, which helps in reducing client-side Javascript
+
+## Client Component
+
+- Use custom hooks
+- Adding Interactivity
+- Using React Class Component
+- Using browser-exclusive APIs
+- Handling event listeners (such as onClick(), onChange(), etc)
+- Managing state and lifecycle effects (such as useState(), useEffect(), useReducer())
+
+# 36. Server-Only Code
+
+1. Certain code is intended to execute only on the server.
+2. You might have modular or functions that use multiple libraries, use environment variables. interact directly with a database, or process confidential information.
+3. Since JS modules can be shared, its possible for code thats meant only for server to unintentionally end up in the client.
+4. If server side code get bundled into client side JS, it could lead to a bloated bundle size, expose secret keys, database queries and sensitive business logic.
+5. It is crucial to separate server-only code from client-side code to protect the application's security and integrity.
+
+## Server-Only Package
+
+- npm i server-only
+- import "server-only"
+- Provide a build-time error if developers accidentally import one of these modules into a Client Component.
+
+<img src="./tutorial_03/public/Screenshot 2025-01-25 200829.png"/>
+
+## Third-Party Package
+
+1. Third-party packages are pre-written software libraries or modules created by developers outside of the core Next.js team that can be installed and used in a Next.js project to add functionality, simplify development, or provide specialized features.
+2. Amuk var third-party package client-only code hoy che to aene server-only ma use karva mate, aene nested folder ma rakhi ne use karvu.
+2. In Next.js, third-party packages are typically installed via npm (Node Package Manager) and serve several important purposes,
+
+### 1. Extending Functionality
+
+-They allow developers to add complex features without writing everything from scratch.
+-Examples include UI component libraries, state management tools, form handling libraries, and authentication solutions
+
+### 2. Common Use Cases
+
+-UI Libraries: Shadcn/ui, Material-UI, Chakra UI
+-State Management: Redux, Zustand, Recoil
+-Form Handling: React Hook Form, Formik
+-Authentication: NextAuth.js, Auth0
+-Data Fetching: React Query, SWR
+-Styling: Tailwind CSS, Styled Components
+
+## Context Provider
+
+- Context Providers are typically rendered near the root of an application to share global application state and logic(application theme).
+- However, since React context is not supported in Server Components, attempting to create a context at the root of your application will result is an error.
+- To address this, you can create a context and render its provider inside a separate Client Component.
+- Apde createContext use kariye root file(layout.tsx) ma to ae by default client-code che to error apse, but we want it without "use client", for that apde ae code ne alg component ma rakhine context and function of that use karishu(in client code only).
