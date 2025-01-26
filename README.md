@@ -768,3 +768,24 @@ export default function ClientComponent(){
 - However, since React context is not supported in Server Components, attempting to create a context at the root of your application will result is an error.
 - To address this, you can create a context and render its provider inside a separate Client Component.
 - Apde createContext use kariye root file(layout.tsx) ma to ae by default client-code che to error apse, but we want it without "use client", for that apde ae code ne alg component ma rakhine context and function of that use karishu(in client code only).
+
+# 41. Client-Only Code
+
+1. Just as it's imporatnt to restrict cetain operation to server, it's equaliy important t0 confine some functionality to the client side.
+2. Client-only code typically interacts with browser-specific features like the DOM, the window object, localStorage etc which are not available on the server.
+3. Ensuring that such code is executed only on the client side prevents errors during server-side rendering.
+4. To prevent unintended server side usage of client side code, we can use a package called client-only.
+
+## Client-Only Package
+
+- npm i client-only
+- import "client-only"
+- Provide a build-time error if developers accidentally import one of these modules into a Server Component.
+
+<img src="./tutorial_03/public/Screenshot 2025-01-25 234043.png"/>
+
+## Client Component Placement
+
+1. To compensate for server components not being able to manage state and handle interactivity, you need to crate client components.
+2. Its recommended to poition these client components lower in your component tree.
+3. Marked Parent "use client" then all of their children are automatically marked as client component.
