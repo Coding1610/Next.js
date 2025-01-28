@@ -1,3 +1,5 @@
+import { revalidatePath } from "next/cache";
+
 type User = {
     id:number,
     name:string,
@@ -20,6 +22,7 @@ export default async function MockUser() {
             body:JSON.stringify({name})
         });
         const newUser = await res.json();
+        revalidatePath("/server-fetch");
         console.log(newUser);
     }
 
