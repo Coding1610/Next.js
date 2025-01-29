@@ -11,9 +11,11 @@
   "dependencies": {
     "@clerk/nextjs": "^6.10.3",
     "json-server": "^0.17.4",
+    "leaflet": "^1.9.4",
     "next": "15.1.6",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-leaflet": "^5.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
