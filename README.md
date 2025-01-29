@@ -859,3 +859,13 @@ export default function ClientComponent(){
 ## Data Fetching with Client Component 
 
 - Same as we fetch data in React.
+
+# 43. Authentication with Clerk
+
+1. Sign Up
+2. Sign In
+3. Manage Account
+4. Show UI elemenet based on auth status
+5. Protect routes based on auth status
+6. Read session and user data
+7. Sign Out

@@ -1,3 +1,7 @@
+"use client"
+
+import { useAuth, useUser } from "@clerk/nextjs";
+
 export default async function Users() {
 
     type User = {
@@ -12,8 +16,17 @@ export default async function Users() {
             revalidate:10,
         }
     });
+    
     const users:User[] = await response.json();
     // console.log(users);
+
+    // useAuth() and useUser() both return an Object
+    const { isLoaded, userId, sessionId, getToken } = useAuth();
+    // const { isLoaded, isSignedIn, user } = useUser();
+
+    if( !isLoaded || !userId ){
+        return null;
+    }
 
     return (
         <>
