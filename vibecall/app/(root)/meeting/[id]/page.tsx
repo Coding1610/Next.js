@@ -1,5 +1,5 @@
 "use client"
-import React, { use } from 'react'
+import React from 'react'
 import { useState } from 'react';
 import { useUser } from '@clerk/nextjs'
 import { StreamCall, StreamTheme } from '@stream-io/video-react-sdk';
@@ -17,7 +17,7 @@ export default function Meeting(
 
   const {call, isCallLoading} = useGetCallById(id);
 
-  if( !isLoaded || isCallLoading ) return <Loader/>
+  if( !isLoaded || isCallLoading || !user ) return <Loader/>
 
   return (
     <>
@@ -30,4 +30,4 @@ export default function Meeting(
     </main>
     </>
   )
-}
+} 

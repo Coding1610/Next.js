@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { useGetCallById } from "@/hooks/useGetCallById";
 import { Copy } from "lucide-react";
 import { useStreamVideoClient } from "@stream-io/video-react-sdk";
-import { Metadata } from 'next'
 
 const Table = ({
   title,

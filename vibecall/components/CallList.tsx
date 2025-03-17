@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useGetCalls } from '@/hooks/useGetCalls';
 import { Call, CallRecording } from '@stream-io/video-react-sdk';
-import { StepBack,StepForward,Video,Copy,Play,ChevronRight } from 'lucide-react';
+import { StepBack,StepForward,Video,Play,ChevronRight } from 'lucide-react';
 
 const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
 
@@ -57,6 +57,7 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
                 setRecordings(recordings);
 
             } catch(error){
+                console.log(error);
                 toast("Try again later");
             }
 

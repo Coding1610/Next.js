@@ -11,7 +11,7 @@ import { SignedIn, UserButton } from '@clerk/nextjs'
 
 export default function Navbar() {
 
-    const documentRef = useRef(null);
+    const documentRef = useRef<HTMLElement | null>(null); 
 
     useEffect(() => {
         documentRef.current = document.documentElement;
