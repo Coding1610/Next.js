@@ -18,6 +18,7 @@ export default function Navbar() {
     }, []);
 
     const {isFullscreen, toggleFullscreen } = useFullscreen(documentRef);
+    console.log(isFullscreen);
 
     return (
         <>
