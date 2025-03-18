@@ -63,15 +63,6 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to see the a
 
 ---
 
-## 🎯 Roadmap & Future Enhancements
-
-✅ Custom meeting backgrounds 🎨  
-✅ Virtual hand raise & reactions ✋😀  
-✅ Chat integration during meetings 💬  
-✅ AI-powered meeting summaries 📜  
-
----
-
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to fork this repo, create a branch, and submit a PR.
